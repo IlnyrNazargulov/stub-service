@@ -1,0 +1,13 @@
+route:
+  group_by: ['alertname', 'cluster', 'service']
+  group_wait: 5s
+  group_interval: 5s
+  repeat_interval: 5s
+  receiver: 'telega'
+receivers:
+  - name: 'telega'
+    telegram_configs:
+      - bot_token: 'XXXX'
+        api_url: 'https://api.telegram.org'
+        chat_id: XXX
+        parse_mode: ''

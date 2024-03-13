@@ -1,0 +1,16 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:13-alpine
+    environment:
+      POSTGRES_USER: stub_requests
+      POSTGRES_PASSWORD: stub_requests
+      POSTGRES_DB: stub_requests
+    volumes:
+      - postgres-storage:/var/lib/postgresql/data
+    ports:
+      - "5433:5432"
+    restart: always
+volumes:
+  postgres-storage:

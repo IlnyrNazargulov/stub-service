@@ -1,0 +1,17 @@
+server:
+  port: 8080
+  forward-headers-strategy: NATIVE
+spring:
+  datasource:
+    password: stub_requests
+    username: stub_requests
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5432/stub_requests
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    open-in-view: false
+  jackson:
+    serialization:
+      write-dates-as-timestamps: true
+      write-date-timestamps-as-nanoseconds: false
