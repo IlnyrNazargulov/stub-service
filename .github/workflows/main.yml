@@ -28,7 +28,7 @@ jobs:
       - name: Build and Publish
         run: |
           docker build . --tag ${{ secrets.REGISTRY }}/${{vars.IMAGE_NAME}}
-          docker push ${{ secrets.REGISTRY }}/${{vars.IMAGE_NAME}}
+          docker push ${{ secrets.REGISTRY }}/${{vars.IMAGE_NAME}}:latest
 
   deploy:
     runs-on: self-hosted
