@@ -16,7 +16,12 @@ public class StubRequestService {
 
     public void createStubRequest(String tag, String value) {
         Instant now = Instant.now();
-        stubRequestRepository.save(new StubRequest(value, tag, now));
+        stubRequestRepository.save(new StubRequest(value, tag, null, now));
+    }
+
+    public void createStubRequest(String tag, String value, String response) {
+        Instant now = Instant.now();
+        stubRequestRepository.save(new StubRequest(value, tag, response, now));
     }
 
     public List<StubRequest> getStubRequests(String tag, Pageable pageable) {

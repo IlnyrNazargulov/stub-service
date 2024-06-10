@@ -21,12 +21,15 @@ public class StubRequest {
     private String value;
     @Column(nullable = false, updatable = false)
     private String tag;
+    @Column(updatable = false)
+    private String response;
     @Column(nullable = false, updatable = false)
     private Instant createdAt;
 
-    public StubRequest(String value, String tag, Instant createdAt) {
+    public StubRequest(String value, String tag, String response, Instant createdAt) {
         this.value = value;
         this.tag = tag;
+        this.response = response;
         this.createdAt = createdAt;
     }
 }
