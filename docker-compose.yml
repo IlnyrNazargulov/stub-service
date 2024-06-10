@@ -10,7 +10,7 @@ services:
     volumes:
       - postgres-data:/var/lib/postgresql/data
   app:
-    image: ghcr.io/ilnyrnazargulov/stub-service:latest
+    image: ghcr.io/serafim365karat/stub-service:latest
     ports:
       - "8090:8080"
     depends_on:
