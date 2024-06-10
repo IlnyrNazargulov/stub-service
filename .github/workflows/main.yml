@@ -24,7 +24,7 @@ jobs:
         run: mvn clean package
       - name: Login
         run: |
-          echo ${{ secrets.GHCR_PASSWORD }} | docker login ${{ secrets.REGISTRY }} -u ${{ secrets.GHCR_USERNAME }} --password-stdin
+          echo ${{ secrets.GHCR_PASSWORD }} | docker login ${{ secrets.REGISTRY }} -u ${{ github.actor }} --password-stdin
       - name: Build and Publish
         run: |
           docker build . --tag ${{ secrets.REGISTRY }}/${{vars.IMAGE_NAME}}
@@ -37,7 +37,7 @@ jobs:
       - name: checkout repo
         uses: actions/checkout@v3
       - name: Login
-        run: echo ${{ secrets.GHCR_PASSWORD }} | docker login ${{ secrets.REGISTRY }} -u ${{ secrets.GHCR_USERNAME }} --password-stdin
+        run: echo ${{ secrets.GHCR_PASSWORD }} | docker login ${{ secrets.REGISTRY }} -u ${{ github.actor }} --password-stdin
       - name: Pull image
         run: docker-compose pull
       - name: docker-compose
