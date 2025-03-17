@@ -25,7 +25,7 @@ public class StubServerController {
     private final StubRequestService stubRequestService;
     private final ObjectMapper objectMapper;
 
-    @PostMapping(value = "/stub-requests/{tag}/")
+    @PostMapping(value = "/stub-requests/{tag}")
     public ResponseEntity handleRequests(
             @Validated @RequestBody String body,
             @PathVariable String tag,
