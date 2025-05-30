@@ -47,7 +47,7 @@ public class StubServerController {
 //            }
 //            StubResponse response = new StubResponse(200, resultItems);
 //
-//            stubRequestService.createStubRequest(tag, body, objectMapper.writeValueAsString(response));
+            stubRequestService.createStubRequest(tag, body, stubResponseService.getStubResponse());
             return ResponseEntity.ok(stubResponseService.getStubResponse());
         }
         catch (Exception e) {
@@ -83,9 +83,7 @@ public class StubServerController {
     }
 
     @GetMapping(value = "/stub-response/")
-    public ResponseEntity getStubResponse(
-            @RequestBody String body
-    ) {
+    public ResponseEntity getStubResponse() {
         return ResponseEntity.ok(stubResponseService.getStubResponse());
     }
 
