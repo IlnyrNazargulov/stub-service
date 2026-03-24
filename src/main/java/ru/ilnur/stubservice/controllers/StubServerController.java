@@ -46,7 +46,7 @@ public class StubServerController {
         }
         try {
             stubRequestService.createStubRequest(tag, body, stubResponseService.getStubResponse());
-            return ResponseEntity.ok(stubResponseService.getStubResponse());
+            return ResponseEntity.status(stubResponseService.getResponseCode()).body(stubResponseService.getStubResponse());
         }
         catch (Exception e) {
             log.error(e.getMessage(), e);
@@ -83,7 +83,7 @@ public class StubServerController {
         String body = multipartFileSb.toString();
         try {
             stubRequestService.createStubRequest(tag, body, stubResponseService.getStubResponse());
-            return ResponseEntity.ok(stubResponseService.getStubResponse());
+            return ResponseEntity.status(stubResponseService.getResponseCode()).body(stubResponseService.getStubResponse());
         }
         catch (Exception e) {
             log.error(e.getMessage(), e);
@@ -117,9 +117,22 @@ public class StubServerController {
         return ResponseEntity.ok().build();
     }
 
+    @PostMapping(value = "/stub-code/")
+    public ResponseEntity updateStubResponse(
+            @RequestBody Integer code
+    ) {
+        stubResponseService.setResponseCode(code);
+        return ResponseEntity.ok().build();
+    }
+
     @GetMapping(value = "/stub-response/")
     public ResponseEntity getStubResponse() {
         return ResponseEntity.ok(stubResponseService.getStubResponse());
+    }
+
+    @GetMapping(value = "/stub-code/")
+    public ResponseEntity getStubCode() {
+        return ResponseEntity.ok(stubResponseService.getResponseCode());
     }
 
 
